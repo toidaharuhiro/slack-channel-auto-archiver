@@ -1,0 +1,10 @@
+#!/bin/bash
+# pre-push hook: push前に全チェック実行
+# git config core.hooksPath .hooks で有効化
+
+echo "pre-push: ハーネス実行中..."
+bash scripts/harness.sh
+if [ $? -ne 0 ]; then
+  echo "ERROR: ハーネスが失敗しました。pushを中止します。"
+  exit 1
+fi

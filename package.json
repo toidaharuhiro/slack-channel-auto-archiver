@@ -1,0 +1,26 @@
+{
+  "name": "slack-channel-archiver",
+  "version": "1.0.0",
+  "description": "Slack パブリックチャンネル自動アーカイブ GAS アプリ",
+  "scripts": {
+    "build": "node esbuild.config.mjs",
+    "push": "npm run build && clasp push",
+    "deploy": "npm run push && clasp deploy -d \"$(date +%Y%m%d-%H%M%S)\"",
+    "open": "clasp open",
+    "logs": "clasp logs",
+    "test": "jest --config jest.config.js",
+    "test:watch": "jest --watch",
+    "lint": "tsc --noEmit",
+    "clean": "rm -rf dist/"
+  },
+  "devDependencies": {
+    "@google/clasp": "^3.3.0",
+    "@types/google-apps-script": "^1.0.83",
+    "@types/jest": "^29.5.12",
+    "esbuild": "^0.28.0",
+    "esbuild-gas-plugin": "^0.6.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.4.0"
+  }
+}

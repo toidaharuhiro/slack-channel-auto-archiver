@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# clasp config (contains script ID)
+.clasp.json
+
+# Secrets
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Test
+coverage/
+
+# Misc
+*.js.map
+*.log
+npm-debug.log*

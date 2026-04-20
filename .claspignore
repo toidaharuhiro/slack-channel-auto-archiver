@@ -1,0 +1,5 @@
+# clasp push 時に dist/ と appsscript.json のみをアップロードする
+# それ以外は無視
+**/**
+!dist/**
+!appsscript.json

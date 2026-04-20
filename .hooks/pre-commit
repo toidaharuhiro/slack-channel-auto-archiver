@@ -1,0 +1,37 @@
+#!/bin/bash
+# pre-commit hook: セキュリティチェック
+# git config core.hooksPath .hooks で有効化
+
+set -uo pipefail
+RED='\033[0;31m'
+NC='\033[0m'
+FAIL=false
+
+# トークンハードコード検査
+if grep -rn "xoxb-" src/ --include="*.ts" 2>/dev/null | grep -v "test" | grep -q .; then
+  echo -e "${RED}ERROR: ソースコードにSlack Tokenがハードコードされています${NC}"
+  FAIL=true
+fi
+
+# any型の使用検査
+if grep -rn ": any[^t]" src/ --include="*.ts" 2>/dev/null | grep -q .; then
+  echo -e "${RED}ERROR: any型が使用されています${NC}"
+  FAIL=true
+fi
+
+# .envファイルのコミット防止
+if git diff --cached --name-only | grep -qE "^\.env"; then
+  echo -e "${RED}ERROR: .envファイルがコミットに含まれています${NC}"
+  FAIL=true
+fi
+
+# .clasp.jsonのコミット防止
+if git diff --cached --name-only | grep -q "^\.clasp\.json$"; then
+  echo -e "${RED}ERROR: .clasp.jsonがコミットに含まれています${NC}"
+  FAIL=true
+fi
+
+if [ "$FAIL" = true ]; then
+  echo -e "${RED}コミットを中止しました${NC}"
+  exit 1
+fi

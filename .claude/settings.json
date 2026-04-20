@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm *)",
+      "Bash(npx tsc *)",
+      "Bash(npx jest *)",
+      "Bash(npx clasp *)",
+      "Bash(bash scripts/*)",
+      "Bash(cat *)",
+      "Bash(ls *)",
+      "Bash(grep *)",
+      "Bash(wc *)",
+      "Bash(head *)",
+      "Bash(tail *)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(npx clasp deploy --force)"
+    ]
+  }
+}
