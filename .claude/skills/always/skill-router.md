@@ -14,18 +14,22 @@ status: stable
 
 ## ルーティングテーブル
 
-| タスク | 読み込むスキル(on-demand/) |
-|-------|--------------------------|
-| コード作成/修正/レビュー | coding, slack-api, gas-build |
-| テスト作成/修正 | coding, testing |
-| タスク完了/振り返り | retrospective-codify, skill-guide |
-| スキル作成/編集 | skill-lifecycle |
-| トークン節約/大規模変更 | context-management |
-| 質問/調査/相談 | なし |
-| 不明/複合 | skill-guide |
+| タスク | 読み込むスキル(on-demand/) | 推奨コマンド/エージェント |
+|-------|--------------------------|--------------------------|
+| コード作成/修正/レビュー | coding, slack-api, gas-build | `@code-reviewer` でレビュー |
+| テスト作成/修正 | coding, testing | `@test-writer <ファイルパス>` |
+| TDD（テストファースト実装） | coding, testing | `@tdd <機能仕様>` |
+| ビルド/lint/テスト確認 | なし | `/harness` |
+| GASデプロイ | gas-build | `/deploy` |
+| タスク完了/振り返り | retrospective-codify, skill-guide | `/retrospective` |
+| スキル作成/編集 | skill-lifecycle | `/skill-create <概要>` |
+| トークン節約/大規模変更 | context-management | なし |
+| セキュリティ検査 | なし | `/security-check` |
+| 質問/調査/相談 | なし | なし |
+| 不明/複合 | skill-guide | なし |
 
 ## 常時ロード(always/)
 - security-policy.md
 - skill-router.md（本ファイル）
 
-新スキル追加時は本テーブルに行を追加すること。
+新スキル/エージェント追加時は本テーブルに行を追加すること。
